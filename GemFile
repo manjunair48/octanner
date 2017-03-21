@@ -1,0 +1,7 @@
+source 'http://rubygems.org'
+gem 'cucumber'
+gem 'rspec'
+gem 'watir-webdriver'
+gem 'watir'
+gem 'json'
+gem 'gherkin'

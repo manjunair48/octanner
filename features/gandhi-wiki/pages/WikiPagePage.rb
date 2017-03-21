@@ -1,13 +1,13 @@
 class WikiPage
   attr_accessor :dob
   def initialize(browser)
-    @wiki_born_details = browser.elements(:xpath,"//table[contains(@class,'infobox biography')]//*[contains(text(),'Born')]/parent::*//*[contains(@class,'bday')]/parent::span[text()]")
-    @browser_title = @browser.title()
+    @browser = browser
+    @wiki_born_details_xpath = "//table[contains(@class,'infobox biography')]//*[contains(text(),'Born')]/parent::*//td"
     @dob = nil
   end
 
   def check_if_wikipage
-    if @browser_title.include? "wikipedia"
+    if @browser.title().include? "wikipedia"
       return true
     end
     return false
@@ -17,10 +17,20 @@ class WikiPage
   end
 
   def capture_bday
-    @dob = @wiki_born_details
+    born_details_text = @browser.element(:xpath,@wiki_born_details_xpath).wait_until_present(timeout: 20).text
+    re = /\d+ \w+ \d+/
+    born_details_text.scan(re) do |match|
+      begin
+        Date.parse(match)
+        @dob = match
+        return true
+      rescue ArgumentError
+        # handle invalid date
+      end
+    end
   rescue Exception => e
     puts e.inspect
-    return false
+    return nil
   end
 
 end

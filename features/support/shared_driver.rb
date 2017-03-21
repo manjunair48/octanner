@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'rspec'
 require 'watir'
+require 'date'
 
 include Selenium
 

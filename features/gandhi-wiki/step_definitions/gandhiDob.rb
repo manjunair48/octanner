@@ -17,7 +17,9 @@ Given(/^I am on the Wikipedia Search page$/) do
 end
 
 When(/^Born is found inside biography$/) do
-  if @wiki_page.capture_bday
-    puts @wiki_page.dob
-  end
+  @wiki_page.capture_bday    
+end
+
+Then(/^Display the birthdate of Mahatma Gandhi$/) do
+  puts "The Date of birth is #{@wiki_page.dob}"
 end
