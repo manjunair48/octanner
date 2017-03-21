@@ -7,8 +7,8 @@ Includes two features one to extarct Mahatama Gandhis DOB from wiki page and oth
 *bundle install of the GemFile
 
 ## Running the tests
-use `cucumber <path to the feature file>` to run the feature files
-also one can use `cucumber --profile html_report <path to the feature file>`
+*use `cucumber <path to the feature file>` to run the feature files
+*also one can use `cucumber --profile html_report <path to the feature file>`
 
 ## License
 This project is licensed under  GNU GENERAL PUBLIC LICENSE - see the [LICENSE](LICENSE) file for details
